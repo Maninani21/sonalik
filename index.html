@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sonalika Tractor Showroom</title>
+  <style>
+    :root {
+      --blue: #0b62a4;
+      --sky: #6bb6ff;
+      --dark: #0b2540;
+      --muted: #6b7b8a;
+      --card-bg: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+      color: var(--dark);
+    }
+    header {
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      color: white;
+      padding: 28px 6%;
+      display: flex;
+      align-items: center;
+    }
+    header .logo {
+      font-weight: 800;
+      font-size: 24px;
+    }
+    header nav {
+      margin-left: auto;
+    }
+    header nav a {
+      color: rgba(255,255,255,0.95);
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #e0f0ff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 36px;
+      padding: 60px 6%;
+      align-items: center;
+    }
+    .kicker {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 16px 0 10px;
+      font-size: 42px;
+    }
+    p.lead {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .cta {
+      display: flex;
+      gap: 16px;
+    }
+    .btn {
+      padding: 14px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .btn.primary {
+      background: white;
+      color: var(--blue);
+    }
+    .btn.primary:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+    .btn.ghost {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn.ghost:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    aside.card {
+      background: var(--card-bg);
+      backdrop-filter: blur(4px);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(11,38,64,0.1);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    main {
+      padding: 36px 6%;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .feature {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(64,87,110,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(64,87,110,0.1);
+    }
+    .feature h3 {
+      margin: 8px 0 12px;
+    }
+    .specs {
+      margin-top: 28px;
+      background: linear-gradient(180deg, #fff, #f3f8ff);
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(64,87,110,0.05);
+    }
+
+    .showroom {
+      display: flex;
+      gap: 28px;
+      margin-top: 40px;
+    }
+    .showroom .map {
+      flex: 1;
+      min-height: 260px;
+      background: url('https://via.placeholder.com/800x420?text=Map+placeholder') center/cover no-repeat;
+      border-radius: 14px;
+    }
+    .showroom .info {
+      width: 450px;
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(64,87,110,0.07);
+    }
+    .dealer-list {
+      margin-top: 16px;
+    }
+    .dealer {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 10px;
+      transition: background-color 0.2s;
+    }
+    .dealer:hover {
+      background-color: #f5f8ff;
+    }
+    .dealer img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    #contact {
+      margin-top: 48px;
+    }
+    #contact form input,
+    #contact form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: 1px solid #e6eefc;
+      font-size: 16px;
+    }
+
+    footer {
+      padding: 32px 6%;
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .showroom { flex-direction: column; }
+      header { padding: 24px; }
+      h1 { font-size: 34px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Sonalika Showroom</div>
+    <nav>
+      <a href="#models">Models</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="intro">
+      <span class="kicker">Premium Tractors • Trusted Performance</span>
+      <h1>Explore Sonalika Tractors — Power. Comfort. Reliability.</h1>
+      <p class="lead">
+        Browse latest models, compare specs, and schedule a test drive. Engineered for Indian fields.
+      </p>
+      <div class="cta">
+        <button class="btn primary">Book Test Drive</button>
+        <button class="btn ghost">Request Quote</button>
+      </div>
+
+      <div class="features" id="features">
+        <div class="feature">
+          <strong>Engine</strong>
+          <h3>High-Torque Diesel</h3>
+          <p>Efficient across 20–75 HP; excellent service life.</p>
+        </div>
+        <div class="feature">
+          <strong>Transmission</strong>
+          <h3>Multiple Gear Options</h3>
+          <p>Constant mesh, synchromesh, shuttle – smooth shifting.</p>
+        </div>
+        <div class="feature">
+          <strong>After Sales</strong>
+          <h3>Service & Parts</h3>
+          <p>Authorized service centers, genuine parts & support.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <strong>Showroom Highlights</strong>
+          <div style="color:var(--muted);font-size:14px;">Open: Mon–Sat | 9:30 AM – 6:30 PM</div>
+        </div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">Call: +91 98765 43210</div>
+      </div>
+
+      <div class="gallery">
+        <img src="https://www.sonalika.com/media/product-thumbnail/rx-745-iii-4wd-min-1709706021.jpg" alt="Sonalika RX-745 4WD" loading="lazy">
+        <img src="https://tractorguru.in/upload/tractor/Tractor%20Images/Sonalika/tractor-cover-Sikander%20Di%2055%20III%20DLX-1748264007.webp" alt="Sonalika Sikander DI 55 III DLX" loading="lazy">
+        <img src="https://images.wikia.com/…/(example)".jpg alt="Tractor image 3" loading="lazy">
+        <img src="https://images.wikia.com/…/(example)".jpg alt="Tractor image 4" loading="lazy">
+      </div>
+
+      <div style="margin-top:18px;display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted);">
+        <span>Special Offer: 0.99% finance*</span>
+        <span>EMI options available</span>
+      </div>
+    </aside>
+  </section>
+
+  <main>
+    <section id="models">
+      <h2>Popular Models</h2>
+      <div class="specs">
+        <strong>RX 745</strong> — 75 HP, 4WD option  
+        <br><br>
+        <strong>Sikander DI 55 III DLX</strong> — versatile & farm-friendly  
+        <br><br>
+        <strong>DI 35 / RX 42</strong> — for small-to-mid farms
+      </div>
+
+      <div class="showroom">
+        <div class="map"></div>
+        <aside class="info">
+          <strong>Visit Our Showroom</strong>
+          <div class="dealer-list">
+            <div class="dealer">
+              <img src="https://via.placeholder.com/80?text=Dealer+1" alt="Dealer 1">
+              <div><strong>Raj Motors</strong><br><small>Main Bazaar</small></div>
+            </div>
+            <div class="dealer">
+              <img src="https://via.placeholder.com/80?text=Dealer+2" alt="Dealer 2">
+              <div><strong>AgriWorld</strong><br><small>Industrial Area</small></div>
+            </div>
+            <div class="dealer">
+              <img src="https://via.placeholder.com/80?text=Dealer+3" alt="Dealer 3">
+              <div><strong>FarmTech</strong><br><small>Highway Road</small></div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px;">
+            <button class="btn primary">Get Directions</button>
+            <button class="btn ghost">Contact Dealer</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact & Booking</h2>
+      <p class="lead">
+        Request a quote or schedule a test drive. Our team will reach you shortly.
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 350px;gap:24px;margin-top:20px;">
+        <form style="background:white;padding:24px;border-radius:14px;box-shadow:0 8px 20px rgba(64,87,110,0.07);">
+          <label>Name</label>
+          <input type="text" placeholder="Your Name">
+          <label>Phone</label>
+          <input type="text" placeholder="Your Mobile">
+          <label>Model Interested</label>
+          <select>
+            <option>RX 745</option>
+            <option>Sikander DI 55 III DLX</option>
+            <option>DI 35 / RX 42</option>
+          </select>
+          <button class="btn primary" type="button">Submit Request</button>
+        </form>
+        <aside style="background: linear-gradient(180deg, #fff, #f8fbff); padding:24px; border-radius:14px; box-shadow:0 8px 20px rgba(64,87,110,0.07);">
+          <strong>Hotline</strong>
+          <div style="margin-top:10px; color:var(--muted);">+91 98765 43210 (Sales)</div>
+          <div style="margin-top:18px;"><strong>Service Support</strong><div style="color:var(--muted);">support@sonalika-dealer.com</div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© Sonalika Showroom • All rights reserved</div>
+    <div>Demo design • Replace images if needed</div>
+  </footer>
+</body>
+</html>
